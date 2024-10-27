@@ -379,8 +379,8 @@ agg_df
 
 # %%
 # Load predictions from two model versions for comparison, indexed by flight ID
-pred_v9 = pd.read_csv('team_outspoken_engine_v9_796a128a-c833-453a-8653-5347905ae539.csv', index_col='flight_id')
-pred_v11 = pd.read_csv('team_outspoken_engine_v11_796a128a-c833-453a-8653-5347905ae539.csv', index_col='flight_id')
+pred_v9 = pd.read_csv('team_outspoken_engine_v0_796a128a-c833-453a-8653-5347905ae539.csv', index_col='flight_id')
+pred_v11 = pd.read_csv('team_outspoken_engine_v1_796a128a-c833-453a-8653-5347905ae539.csv', index_col='flight_id')
 
 # %%
 # Display the first few rows of the version 11 predictions to verify data integrity
