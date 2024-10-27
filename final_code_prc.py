@@ -345,39 +345,6 @@ df_pred.to_csv(csv_path, index=False)
 import pandas as pd
 
 # %%
-# Define the path to the CSV file containing the raw data
-url = "./comp_data_2024-10-20/challenge_set.csv"
-# Load the dataset into a DataFrame
-raw_data = pd.read_csv(url)
-
-# Create a new column 'route' by concatenating the departure and destination airports
-raw_data['route'] = raw_data['adep'] + "-" + raw_data['ades']
-
-# Display the first few rows of the dataset to verify the data was loaded correctly
-raw_data.head()
-
-# %%
-# Display the column names of the raw dataset
-raw_data.columns
-
-# %%
-# Aggregate the data by route, airline, and aircraft type
-# Calculate the count, mean, and standard deviation for the 'tow' (takeoff weight) column
-agg_df = raw_data.groupby(['route', 'airline', 'aircraft_type']).agg(
-    tow_count=('tow', 'count'),    # Count of takeoff weight records
-    tow_mean=('tow', 'mean'),      # Mean takeoff weight
-    tow_std=('tow', 'std')         # Standard deviation of takeoff weight
-).reset_index()
-
-# %%
-# Calculate the percentage of variability in 'tow' by dividing standard deviation by mean
-agg_df['tow_perc'] = agg_df['tow_std'] / agg_df['tow_mean']
-
-# %%
-# Display the aggregated DataFrame to verify calculations
-agg_df
-
-# %%
 # Load predictions from two model versions for comparison, indexed by flight ID
 pred_v9 = pd.read_csv('team_outspoken_engine_v0_796a128a-c833-453a-8653-5347905ae539.csv', index_col='flight_id')
 pred_v11 = pd.read_csv('team_outspoken_engine_v1_796a128a-c833-453a-8653-5347905ae539.csv', index_col='flight_id')
